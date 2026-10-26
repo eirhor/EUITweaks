@@ -26,10 +26,32 @@ local function Register()
                     ready = "Ready check (Blizzard)",
                     custom = "Custom path (/blvoice path)",
                 }
+                local order = { "default", "raid", "ready" }
+                local libstub = _G.LibStub
+                local lsm = libstub and libstub("LibSharedMedia-3.0", true)
+                if lsm then
+                    local registered = {}
+                    for _, name in ipairs(lsm:List("sound") or {}) do
+                        if name:sub(1, 6) == "GVM - " then
+                            registered[#registered + 1] = name
+                        end
+                    end
+                    table.sort(registered)
+                    for _, name in ipairs(registered) do
+                        choices[name] = name
+                        order[#order + 1] = name
+                    end
+                end
+                order[#order + 1] = "custom"
+                local selected = DB().soundChoice
+                if selected and not choices[selected] then
+                    choices[selected] = selected .. " (unavailable)"
+                    order[#order + 1] = selected
+                end
                 _, h = W:Dropdown(parent, "Sound", y, choices,
                     function() return DB().soundChoice or "default" end,
                     function(v) DB().soundChoice = v end,
-                    { "default", "raid", "ready", "custom" }); y = y - h
+                    order); y = y - h
                 _, h = W:Button(parent, "Test sound", y, function()
                     if _G.EllesmereBloodlustVoice_Play then _G.EllesmereBloodlustVoice_Play(true) end
                 end); y = y - h
