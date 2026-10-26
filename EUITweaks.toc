@@ -1,0 +1,11 @@
+## Interface: 120000, 120001, 120005, 120007, 120100
+## Title: EUI Tweaks
+## Notes: Modular quality-of-life tweaks for EllesmereUI.
+## Author: Eirik
+## Version: 0.4.0
+## Dependencies: EllesmereUIQoL
+## OptionalDeps: GenericVoiceMedia
+## SavedVariables: EUITweaksDB, EllesmereBloodlustVoiceDB
+
+EllesmereBloodlustVoice.lua
+EllesmereBloodlustVoice_UI.lua
