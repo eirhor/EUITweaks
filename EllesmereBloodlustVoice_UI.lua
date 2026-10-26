@@ -8,7 +8,7 @@ local function Register()
     local eui = _G.EllesmereUI
     if not (eui and eui.RegisterPlugin) then return end
     eui.RegisterPlugin(ID, {
-        label = "EUI Tweaks",
+        label = "Tweaks",
         modules = {{
             key = "Bloodlust", title = "Bloodlust",
             description = "Play a voice alert when your Bloodlust lockout expires.",
