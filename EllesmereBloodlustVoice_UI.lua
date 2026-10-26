@@ -1,5 +1,5 @@
 -- EllesmereUI public plugin API (v1); does not patch EllesmereUI internals.
-local ID = "EllesmereBloodlustVoice"
+local ID = "EUITweaks"
 local function DB()
     EllesmereBloodlustVoiceDB = EllesmereBloodlustVoiceDB or {}
     return EllesmereBloodlustVoiceDB
@@ -8,11 +8,11 @@ local function Register()
     local eui = _G.EllesmereUI
     if not (eui and eui.RegisterPlugin) then return end
     eui.RegisterPlugin(ID, {
-        label = "Bloodlust Voice",
+        label = "EUI Tweaks",
         modules = {{
-            key = "Sounds", title = "Bloodlust Voice",
+            key = "Bloodlust", title = "Bloodlust",
             description = "Play a voice alert when your Bloodlust lockout expires.",
-            pages = { "Sound" },
+            pages = { "Bloodlust" },
             buildPage = function(_, parent, yOffset)
                 local W = eui.Widgets
                 local y, h = yOffset, 0
