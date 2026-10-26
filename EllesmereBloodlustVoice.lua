@@ -90,7 +90,7 @@ SlashCmdList.ELLESMEREBLV = function(msg)
     if msg == "test" then
         PlayAlert(true)
     elseif msg == "config" then
-        if EllesmereUI and EllesmereUI.OpenPlugin then EllesmereUI.OpenPlugin("EllesmereBloodlustVoice") end
+        if EllesmereUI and EllesmereUI.OpenPlugin then EllesmereUI.OpenPlugin("EUITweaks") end
     elseif msg:sub(1, 5) == "path " then
         EllesmereBloodlustVoiceDB.sound = msg:sub(6)
         EllesmereBloodlustVoiceDB.soundChoice = "custom"
