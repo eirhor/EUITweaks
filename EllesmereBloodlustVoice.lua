@@ -28,7 +28,18 @@ local function PlayAlert(force)
     elseif choice == "ready" then
         PlaySound(SOUNDKIT.READY_CHECK, "Master")
     else
-        local path = choice == "custom" and db.sound or SOUND
+        local path
+        if choice:sub(1, 6) == "GVM - " then
+            local libstub = _G.LibStub
+            local lsm = libstub and libstub("LibSharedMedia-3.0", true)
+            path = lsm and lsm:Fetch("sound", choice, true)
+            if not path then
+                print("|cffffaa00EllesmereBloodlustVoice:|r Sound not registered: " .. choice)
+                return
+            end
+        else
+            path = choice == "custom" and db.sound or SOUND
+        end
         if not path or not PlaySoundFile(path, "Master") then
             print("|cffffaa00EllesmereBloodlustVoice:|r Missing sound file: " .. tostring(path))
         end
